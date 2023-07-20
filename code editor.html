@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="view port" content="width=device-width,initial-scale=1.0">
+    <title>code editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<body>
+    <div class="boxes">
+        <div class="left">
+        <label><i class="fa-brands fa-html5"></i>HTML code</label>
+        <textarea id="html-code" onkeyup="run()"></textarea>
+        <label><i class="fa-brands fa-css3-alt"></i>CSS code</label>
+        <textarea id="css-code"onkeyup="run()"></textarea>
+        <label><i class="fa-brands fa-js"></i>JS code</label>
+        <textarea id="js-code"onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+        <label><i class="fa-solid fa-circle-play"></i>Output</label>
+        <iframe id="output"></iframe>
+        </div>
+    </div>
+</body>
+<script>
+    function run(){
+        let htmlcode=document.getElementById("html-code").value;
+        let csscode=document.getElementById("css-code").value;
+        let jscode=document.getElementById("js-code").value;
+        let output=document.getElementById("output");
+        output.contentDocument.body.innerHTML=htmlcode+"<style>"+csscode+"</style>";
+        output.contentwindow.eval("jscode");
+    }
+</script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family:"poppins",sans-serif;
+        box-sizing: border-box;
+    }
+    body{
+        background: #454545;
+        color: #fff;
+
+    }
+    .boxes{
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        padding: 20px;
+
+    }
+    .left, .right{
+       flex-basis: 50%;
+       padding: 10px;
+    }
+    textarea{
+        width: 100%;
+        height: 29%;
+        background: #1f1f1f;
+        color: #fff;
+        padding: 10px 20px;
+        border: 0;
+        outline: 0;
+        font-size: 18px;
+    }
+    iframe{
+        width: 100%;
+        height: 95%;
+        background: #fff;
+    }
+    label i{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    label{
+        display: flex;
+        align-items: center;
+        background: #000;
+        height: 30px;
+    }
+</style>
